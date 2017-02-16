@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--
+1. 绑定监听:
+  v-on:xxx="fun"
+  @xxx="fun"
+  @xxx="fun(参数)"
+  默认事件形参: event
+  隐含属性对象: $event
+2. 事件修饰符:
+  .prevent : 阻止事件的默认行为 event.preventDefault()
+  .stop : 停止事件冒泡 event.stopPropagation()
+3. 按键修饰符
+  .keycode : 操作的是某个keycode值的健
+  .enter : 操作的是enter键
+-->
+
+<div id="example">
+
+  <h2>1. 绑定监听</h2>
+  <button @click="getX">坐标X</button>
+  <button @click="test2('点击事件', $event)">坐标Y</button>
+
+  <h2>2. 事件修饰符</h2>
+  <a href="http//www.baidu.com" @click.prevent="test3">百度</a>
+  <p>阻值事件冒泡行为</p>
+  <div style="width: 300px; height: 200px; background-color: red" @click="test4">
+    <div style="width: 100px; height: 100px; background-color: yellow" @click.stop="test5"></div>
+  </div>
+
+  <h2>3. 按键修饰符</h2>
+</div>
+
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript">
+  new Vue({
+    el: '#example',
+    data: {
+
+    },
+    methods: {
+      getX(event) {
+        alert('点击时X坐标: ' + event.clientX)
+      },
+      test2(data, event) {
+        alert(data + '---' + event.clientY)
+      },
+      test3() {
+        alert('点击百度，但是取消默认跳转')
+      },
+      test4() {
+        alert('点击了父DIV')
+      },
+      test5() { //默认会有事件冒泡用.stop阻止
+        alert('点击了子DIV')
+      }
+    }
+  })
+
+</script>
+</body>
+</html>

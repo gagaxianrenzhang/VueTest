@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>04_综合</title>
+</head>
+<body>
+
+<!--
+  综合使用以下技术:
+  1. 页面指令:
+    v-model
+    @click
+    @keyup.enter
+    v-for / $index
+    v-text
+  2. Vue对象
+    初始化数据: data
+    事件处理函数: methods
+-->
+<div id="app">
+  <input type="text" v-model="newTodo" @keyup.enter="addTodo">
+  <ul>
+    <li v-for="todo in todos">
+      {{todo}} <button @click="deleteTodo($index)">X</button>
+    </li>
+  </ul>
+</div>
+
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript">
+  new Vue({
+    el: "#app",
+    data: {
+      newTodo: null,
+      todos: ['A', 'B', 'C']
+    },
+    methods: {
+      addTodo() {
+//        向todos中添加数据
+        this.todos.push(this.newTodo)
+//        清除input中的数据
+        this.newTodo = ''
+      },
+      deleteTodo(index) {
+        if(confirm('确定删除吗')) {
+          this.todos.splice(index, 1)
+        }
+      }
+    }
+
+  })
+</script>
+</body>
+</html>

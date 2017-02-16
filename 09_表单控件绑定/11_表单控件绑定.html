@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--
+1. 使用v-model对表单项数据双向绑定
+  text/textarea
+  checkbox : 绑定boolean/string值
+  radio
+  select
+2. 失去焦点才更新: lazy
+3. 延迟指定时间才更新: debounce='1000'
+-->
+<div id="demo">
+  <div>Message is---{{msg}}</div>
+  <input type="text" v-model="msg"><br>
+  <textarea name="" id="" cols="30" rows="10" v-model="msg"></textarea>
+  <hr>
+  <input type="checkbox"  id='checkbox' v-model="isOK">
+  <label for="checkbox">{{isOK}}</label>
+  <hr>
+  <input type="checkbox" id="Bob" value="Bob" v-model="checkedNames">
+  <label for="Jack">Bob</label>
+  <input type="checkbox" id="Tom" value="Tom" v-model="checkedNames">
+  <label for="Jack">Tom</label>
+  <input type="checkbox" id="Jack" value="Jack" v-model="checkedNames">
+  <label for="Jack">Jack</label>
+  <br>
+  <span>CheckNames--{{checkedNames | json}}</span>
+
+
+</div>
+
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript">
+  new Vue({
+    el: '#demo',
+    data: {
+      msg: 'atguigu',
+      isOK: true,
+      checkedNames: []
+    }
+  })
+</script>
+</body>
+</html>
