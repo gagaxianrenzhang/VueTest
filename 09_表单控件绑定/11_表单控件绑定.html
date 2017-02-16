@@ -30,6 +30,23 @@
   <label for="Jack">Jack</label>
   <br>
   <span>CheckNames--{{checkedNames | json}}</span>
+  <hr>
+
+  <input type="radio" id="male" value="Male" v-model="sex">
+  <label for="male">Male</label>
+  <br>
+  <input type="radio" id="female" value="Female" v-model="sex">
+  <label for="female">Female</label>
+  <br>
+  <span>Sex: {{sex}}</span>
+  <hr>
+  <select v-model="selected">
+    <option>北京</option>
+    <option selected>吉林</option>
+    <option>天津</option>
+  </select>
+  <span>Selected: {{selected}}</span>
+
 
 
 </div>
@@ -41,7 +58,10 @@
     data: {
       msg: 'atguigu',
       isOK: true,
-      checkedNames: []
+      checkedNames: [],
+      sex: null,
+      selected: null
+
     }
   })
 </script>
